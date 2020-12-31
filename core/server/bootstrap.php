@@ -1,9 +1,11 @@
 <?php
 
 use Core\maker\http\Request;
+use Core\maker\routes\Route;
 
 try {
-    $request = new Request();
+    $routes = new Route();
+    $request = new Request($routes->loadRoutes());
 } catch (\Throwable $th) {
-    //throw $th;
+    echo $th->getMessage();
 }
