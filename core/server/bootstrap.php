@@ -3,8 +3,7 @@
 use Core\maker\http\Request;
 
 try {
-    $request = Request::createRequest();
-    var_dump($request);
+    $request = new Request();
 } catch (\Throwable $th) {
     //throw $th;
 }
