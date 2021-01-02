@@ -2,6 +2,12 @@
     "name": "eric218110/simple-api-php",
     "description": "Simple api PHP",
     "type": "project",
+    "scripts": {
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit --color --stop-on-defect --bootstrap ./vendor/autoload.php __tests__/"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Core\\": "core//",
