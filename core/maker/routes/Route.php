@@ -2,9 +2,10 @@
 
 namespace Core\maker\routes;
 
+use Core\maker\routes\protocols\RouteProtocol;
 use Core\utils\path\Path;
 
-class Route
+class Route implements RouteProtocol
 {
 
     private $routes;

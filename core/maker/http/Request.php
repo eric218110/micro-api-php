@@ -10,10 +10,8 @@ use stdClass;
 class Request
 {
     use Body;
-    use Query;
-    use ClientIP;
 
-    public function __construct()
+    public function createRequest()
     {
         return $this->maker();
     }
@@ -22,8 +20,6 @@ class Request
     {
         $maker = new stdClass();
         $maker->body = $this->createBody();
-        $maker->query = $this->createQuery();
-        $maker->clientIp = $this->loadClientIP();
         return $maker;
     }
 }
