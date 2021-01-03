@@ -1,9 +1,23 @@
 {
+    "version": "0.0.1",
     "name": "eric218110/simple-api-php",
     "description": "Simple api PHP",
-    "type": "Project",
+    "type": "project",
+    "scripts": {
+        "test:core": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit --color --stop-on-defect --bootstrap ./vendor/autoload.php ./core/__tests__/"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core//",
+            "CoreTest\\": "core/__tests__//"
+        }
+    },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "license": "MIT",
     "authors": [
