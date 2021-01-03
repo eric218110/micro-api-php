@@ -10,38 +10,38 @@ use PHPUnit\Framework\TestCase;
 
 class TestTraitBody extends TestCase
 {
-    public function testShouldAddBodyInRequest()
+    protected function fakeBody()
     {
-        // ARRANGE
-        $toJSON = array(
+        return json_encode(array(
             'testFiledOne' => 'testValuOne',
             'testFiledTwo' => 'testValueTwo'
-        );
+        ), true);
+    }
 
-        $jsonBody = json_encode($toJSON, true);
-
+    protected function makeClientHttp()
+    {
         $mock = new MockHandler([
-            new GuzzleResponse(200, ['X-Foo' => 'Bar'], $jsonBody),
+            new GuzzleResponse(200, ['X-Foo' => 'Bar'], $this->fakeBody()),
             new GuzzleResponse(202, ['Content-Length' => 0]),
         ]);
 
         $handlerStack = HandlerStack::create($mock);
 
-        $client = new Client(['handler' => $handlerStack]);
+        return new Client(['handler' => $handlerStack]);
+    }
 
+    public function testShouldAddBodyInRequest()
+    {
+        // ARRANGE
+        $client = $this->makeClientHttp();
         $response = $client->request('POST', '/');
 
-        $routeMock = new RouteMock();
-        $routes = $routeMock->loadRoutes();
         // ACT
-
         $request = new Request();
         $request->createRequest();
 
         // ARRANGE
         $bodyResponse = $response->getBody();
-
-
-        $this->assertEquals($jsonBody, $bodyResponse);
+        $this->assertEquals($this->fakeBody(), $bodyResponse);
     }
 }
