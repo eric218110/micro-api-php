@@ -21,4 +21,9 @@ class RouteMock implements RouteProtocol
 
         return $routes;
     }
+
+    public function loadCurrentRouteWithParams(): string
+    {
+        return "/user/{id}";
+    }
 }
