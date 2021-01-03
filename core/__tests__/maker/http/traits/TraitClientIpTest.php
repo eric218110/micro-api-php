@@ -14,7 +14,7 @@ class TraitClientIpTest extends TestCase
         $client->request('GET', '/');
         $noIpAddress = '0.0.0.0';
         $request = new Request();
-        $request->createRequest();
+        $request->createRequest('fakeParams');
 
         // ACT
         $ipAddress = $request->loadClientIP();

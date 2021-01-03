@@ -15,7 +15,7 @@ class TraitBodyTest extends TestCase
 
         // ACT
         $request = new Request();
-        $request->createRequest();
+        $request->createRequest('fakeParams');
 
         // ARRANGE
         $bodyResponse = $response->getBody();
