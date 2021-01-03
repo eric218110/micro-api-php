@@ -10,6 +10,7 @@ use stdClass;
 class Request
 {
     use Body;
+    use ClientIP;
 
     public function createRequest()
     {
