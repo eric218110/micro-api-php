@@ -1,6 +1,6 @@
 <?php
 
-namespace CoreTest\fakes\http\mocks;
+namespace CoreTest\maker\http\fakes;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

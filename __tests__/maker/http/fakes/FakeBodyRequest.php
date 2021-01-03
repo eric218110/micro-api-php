@@ -1,6 +1,6 @@
 <?php
 
-namespace CoreTest\fakes\http\mocks;
+namespace CoreTest\maker\http\fakes;
 
 class FakeBodyRequest
 {

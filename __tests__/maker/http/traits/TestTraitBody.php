@@ -1,8 +1,8 @@
 <?php
 
 use Core\maker\http\Request;
-use CoreTest\fakes\http\mocks\FakeBodyRequest;
-use CoreTest\fakes\http\mocks\FakeClientHTTP;
+use CoreTest\maker\http\fakes\FakeClientHTTP;
+use CoreTest\maker\http\fakes\FakeBodyRequest;
 use PHPUnit\Framework\TestCase;
 
 class TestTraitBody extends TestCase
