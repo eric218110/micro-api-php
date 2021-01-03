@@ -1,3 +1,5 @@
 /vendor
 /scripts/*
 .env
+/.idea
+.phpunit.result.cache
