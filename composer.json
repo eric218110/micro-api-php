@@ -3,9 +3,9 @@
     "description": "Simple api PHP",
     "type": "project",
     "scripts": {
-        "test": [
+        "test:core": [
             "Composer\\Config::disableProcessTimeout",
-            "phpunit --color --stop-on-defect --bootstrap ./vendor/autoload.php __tests__/"
+            "phpunit --color --stop-on-defect --bootstrap ./vendor/autoload.php ./core/__tests__/"
         ]
     },
     "autoload": {

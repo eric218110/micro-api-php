@@ -4,7 +4,7 @@ use Core\maker\http\Request;
 use CoreTest\maker\http\fakes\FakeClientHTTP;
 use PHPUnit\Framework\TestCase;
 
-class TestTraitClientIp extends TestCase
+class TraitClientIpTest extends TestCase
 {
     public function testShouldTraitClientIPReturnIPIfNoInformed()
     {

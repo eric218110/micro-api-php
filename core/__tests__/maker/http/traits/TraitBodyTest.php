@@ -5,7 +5,7 @@ use CoreTest\maker\http\fakes\FakeClientHTTP;
 use CoreTest\maker\http\fakes\FakeBodyRequest;
 use PHPUnit\Framework\TestCase;
 
-class TestTraitBody extends TestCase
+class TraitBodyTest extends TestCase
 {
     public function testShouldAddBodyInRequest()
     {
