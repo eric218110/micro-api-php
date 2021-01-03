@@ -11,6 +11,7 @@ class Request
 {
     use Body;
     use ClientIP;
+    use Query;
 
     public function createRequest()
     {
