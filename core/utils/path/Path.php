@@ -28,10 +28,17 @@ class Path
 
     public static function isRootDir()
     {
+        $usingPort = ':';
         $hostname = Server::loadHostname();
-        $uri = StringUtil::removeFirstAndLastBar(parse_url(Server::loadRequestURI(), PHP_URL_PATH));
+        $uri = StringUtil::removeFirstAndLastBar(parse_url(Server::loadRequestURIFromServer(), PHP_URL_PATH));
 
+        if (strpos($hostname, $usingPort)) {
+            $hostname = explode($usingPort, $hostname)[0];
+        }
+
+        if ($uri === '') return true;
         if ($hostname === Path::loadBaseFolder()) return true;
-        if ($uri == Path::loadBaseFolder()) return false;
+        if ($uri == Path::loadBaseFolder()) return true;
+        return false;
     }
 }
