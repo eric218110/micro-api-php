@@ -4,9 +4,9 @@ namespace Core\maker\server;
 
 class Server
 {
-    public static function loadRequestURI(): string
+    public static function loadRequestURIFromServer(): string
     {
-        return $_SERVER['REQUEST_URI'];
+        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
 
     public static function loadHostname(): string
