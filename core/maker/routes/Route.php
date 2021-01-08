@@ -15,7 +15,7 @@ class Route implements RouteProtocol
         $this->routes = $routes;
     }
 
-    public function loadRoutes()
+    public function loadRoutes(): array
     {
 
         if ($this->routesIsEmpty()) return $this->loadRoutesWithPathFixed();
