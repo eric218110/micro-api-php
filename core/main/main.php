@@ -1,10 +1,9 @@
 <?php
 
-use Core\data\server\request\ServerRequest;
-use Core\data\utils\path\Path;
-use Core\data\utils\strings\StringsUtil;
+use Core\main\factories\path\FactoryPath;
 
-$stringUtils = new StringsUtil();
-$server = new ServerRequest();
+$instancePath = new FactoryPath();
 
-$path = new Path($server, $server, $stringUtils);
+$path = $instancePath->maker();
+
+var_dump($path->loadIndexFolder());
