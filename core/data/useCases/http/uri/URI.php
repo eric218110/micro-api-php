@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\data\http\uri;
+namespace Core\data\useCases\http\uri;
 
-use Core\domain\uri\URILoadProtocol;
+use Core\domain\protocols\http\uri\URILoadProtocol;
 
 class URI implements URILoadProtocol
 {

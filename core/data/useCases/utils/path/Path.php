@@ -1,14 +1,14 @@
 <?php
 
-namespace Core\data\utils\path;
+namespace Core\data\useCases\utils\path;
 
-use Core\domain\server\request\ServerRequestHostName;
-use Core\domain\server\request\ServerRequestURI;
-use Core\domain\utils\path\BaseFolder;
-use Core\domain\utils\path\BasePath;
-use Core\domain\utils\path\RootDir;
-use Core\domain\utils\path\RouterPath;
-use Core\domain\utils\strings\RemoveFirstAndLastBar;
+use Core\domain\protocols\server\request\ServerRequestHostName;
+use Core\domain\protocols\server\request\ServerRequestURI;
+use Core\domain\protocols\utils\path\BaseFolder;
+use Core\domain\protocols\utils\path\BasePath;
+use Core\domain\protocols\utils\path\RootDir;
+use Core\domain\protocols\utils\path\RouterPath;
+use Core\domain\protocols\utils\strings\RemoveFirstAndLastBar;
 
 class Path implements BaseFolder, BasePath, RootDir, RouterPath
 {
@@ -56,8 +56,8 @@ class Path implements BaseFolder, BasePath, RootDir, RouterPath
         }
 
         if ($uri === '') return true;
-        if ($hostname === $this->loadIndexFolder) return true;
-        if ($uri == $this->loadIndexFolder) return true;
+        if ($hostname === $this->loadIndexFolder()) return true;
+        if ($uri == $this->loadIndexFolder()) return true;
 
         return false;
     }

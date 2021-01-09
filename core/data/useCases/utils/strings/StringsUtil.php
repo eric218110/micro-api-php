@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\data\utils\strings;
+namespace Core\data\useCases\utils\strings;
 
-use Core\domain\utils\strings\RemoveFirstAndLastBar;
+use Core\domain\protocols\utils\strings\RemoveFirstAndLastBar;
 
 class StringsUtil implements RemoveFirstAndLastBar
 {
