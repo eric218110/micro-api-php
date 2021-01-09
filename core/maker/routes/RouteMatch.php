@@ -8,8 +8,8 @@ use Core\maker\routes\protocols\RouteProtocol;
 class RouteMatch
 {
 
-    private array $routes;
-    private string $currentURI;
+    private $routes;
+    private $currentURI;
 
     public function __construct(RouteProtocol $routes, URIProtocols $uri)
     {
