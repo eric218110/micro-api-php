@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\domain\utils\strings;
+namespace Core\domain\protocols\utils\strings;
 
 interface RemoveFirstAndLastBar
 {

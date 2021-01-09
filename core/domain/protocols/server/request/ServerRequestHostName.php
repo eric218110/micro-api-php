@@ -1,6 +1,6 @@
 <?php 
 
-namespace Core\domain\server\request;
+namespace Core\domain\protocols\server\request;
 
 interface ServerRequestHostName {
     public function loadHostname(): string;

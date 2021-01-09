@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\domain\uri;
+namespace Core\domain\protocols\http\uri;
 
 interface URILoadProtocol
 {

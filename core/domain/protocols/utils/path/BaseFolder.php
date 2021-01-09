@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\domain\utils\path;
+namespace Core\domain\protocols\utils\path;
 
 interface BaseFolder {
     public function loadIndexFolder(): string;
