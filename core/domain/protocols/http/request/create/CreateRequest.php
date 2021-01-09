@@ -8,5 +8,5 @@ use Core\domain\protocols\http\request\create;
 
 interface CreateRequest
 {
-    public function create();
+    public function create(): void;
 }
