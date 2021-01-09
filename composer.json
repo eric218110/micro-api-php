@@ -26,5 +26,8 @@
             "name": "Eric Silva Mendes",
             "email": "ericsilvaccp@gmail.com"
         }
-    ]
+    ],
+  "require": {
+    "ext-json": "*"
+  }
 }
