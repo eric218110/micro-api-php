@@ -2,13 +2,6 @@
 
 namespace Core\maker\http\traits;
 
-// pegar os parametros do URI
-// pegar a rota atual
-// rota = ../user/{id}
-// uri  = ../user/1
-// retornar obj
-// ...params->id = 1
-
 trait Params
 {
     public $params;
@@ -17,7 +10,7 @@ trait Params
     {
         $uri = $this->loadCurrentURI();
         $value = $this->loadValueInRouteParams($currentRoute);
-        return '';
+        return $value;
     }
 
     private function loadCurrentURI(): string
