@@ -3,13 +3,9 @@
 namespace Core\data\useCases\http\uri;
 
 use Core\domain\protocols\http\uri\URILoadProtocol;
-use Core\maker\server\Server as ServerAlias;
-use Core\maker\utils\StringUtil;
-use Core\utils\path\Path;
-
+use Core\domain\protocols\server\request\ServerRequestURI;
 use Core\domain\protocols\utils\path\RootDir;
 use Core\domain\protocols\utils\strings\RemoveFirstAndLastBar;
-use Core\domain\protocols\server\request\ServerRequestURI;
 
 class URI implements URILoadProtocol
 {
@@ -19,18 +15,17 @@ class URI implements URILoadProtocol
     private $serverRequest;
     private $homeRootDirectory;
 
-    public function __construct($stringUtil, $path, $serverRequest)
+    public function __construct(RemoveFirstAndLastBar $stringUtil, RootDir $path, ServerRequestURI $serverRequest)
     {
         $this->stringUtil = $stringUtil;
         $this->path = $path;
         $this->serverRequest = $serverRequest;
-        $this->homeRootDirectory = '/';
     }
 
     public function loadURI(): string
     {
         $uri = $this->loadUriExact();
-        if (Path::isRootDir()) return $this->homeRootDirectory;
+        if ($this->path->isRootDir()) return substr($this->serverRequest->loadRequestURI(), 0, 1);
         return $this->stringUtil->remove($uri);
     }
 
@@ -42,7 +37,7 @@ class URI implements URILoadProtocol
 
         if (strpos($uri, $extensionPhp)) {
             $parse = explode($extensionPhp, $uri);
-            if ($parse[1] === '/' || $parse[1] === '') return $this->homeRootDirectory;
+            if ($parse[1] === '/' || $parse[1] === '') return substr($this->serverRequest->loadRequestURI(), 0, 1);
             return $parse[1];
         }
         return $uri;
