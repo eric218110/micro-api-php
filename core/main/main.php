@@ -1,4 +1,6 @@
 <?php
 
-$uri = new \Core\main\factories\uri\FactoryURI();
-echo($uri->maker()->loadURI());
+use Core\main\factories\http\request\create\FactoryCreateRequest;
+
+$request = new FactoryCreateRequest();
+$requestCreate = $request->maker();
