@@ -6,5 +6,5 @@ namespace Core\domain\protocols\server\http\load;
 
 interface ServerHTTPLoadClientIP
 {
-    public function loadHttpClientIp(): string;
+    public function loadHttpClientIp(): ?string;
 }
