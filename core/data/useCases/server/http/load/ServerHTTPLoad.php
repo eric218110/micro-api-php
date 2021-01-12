@@ -12,16 +12,16 @@ class ServerHTTPLoad implements ServerHTTPLoadRemoteAddress, ServerHTTPLoadXForw
 
     public function loadHttpRemoteAddress(): string
     {
-        // TODO: Implement loadHttpRemoteAddress() method.
+        return $_SERVER['REMOTE_ADDR'];
     }
 
     public function loadHttpClientIp(): string
     {
-        // TODO: Implement loadHttpClientIp() method.
+        return $_SERVER['HTTP_CLIENT_IP'];
     }
 
     public function loadHttpXForwarder(): string
     {
-        // TODO: Implement loadHttpXForwarder() method.
+        return $_SERVER['HTTP_X_FORWARDED_FOR'];
     }
 }
