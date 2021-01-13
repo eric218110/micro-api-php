@@ -20,7 +20,8 @@ class FactoryPath extends FactoryMachine
         $this->serverRequest = new ServerRequest();
     }
 
-    public function maker(): Path{
+    public function maker(): Path
+    {
         return new Path($this->serverRequest, $this->serverRequest, $this->stringsUtils);
     }
 
