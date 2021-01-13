@@ -2,7 +2,7 @@
 
 namespace Core\domain\protocols\http\uri;
 
-interface URILoadProtocol
+interface URILoad
 {
     public function loadURI(): string;
 }

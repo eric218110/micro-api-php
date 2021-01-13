@@ -24,12 +24,6 @@ trait Params
         $charExploderRoutesParams = '/';
         $explodeCurrentRoute = explode($charExploderRoutesParams, $routePath);
 
-        foreach ($explodeCurrentRoute as $value) {
-            if (strpos($value, $charSepareteIdsRoutesParams) !== false) {
-                $valueWithoutFirstAndLastChar = substr((substr($value, 1)), 0, -1);
-                return $valueWithoutFirstAndLastChar;
-            }
-        }
         return '';
     }
 }

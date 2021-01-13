@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\main\factories\uri;
+namespace Core\main\factories\http\uri;
 
 use Core\data\useCases\http\uri\URI;
 use Core\data\useCases\server\request\ServerRequest;
@@ -15,9 +15,9 @@ class FactoryURI extends FactoryMachine
     public function maker(): URI
     {
         $stringUtil = new StringsUtil();
-        $path = new FactoryPath();
+        $path = (new FactoryPath())->maker();
         $server = new ServerRequest();
 
-        return new URI($stringUtil, $path->maker(), $server);
+        return new URI($stringUtil, $path, $server);
     }
 }
