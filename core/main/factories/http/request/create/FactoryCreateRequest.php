@@ -8,6 +8,7 @@ use Core\data\useCases\http\request\create\CreateRequest;
 use Core\data\useCases\server\php\contents\PHPServer;
 use Core\data\useCases\server\http\load\ServerHTTPLoad;
 use Core\data\useCases\server\http\validate\ServerHTTPValidate;
+use Core\data\useCases\server\request\ServerRequest;
 use Core\data\useCases\utils\strings\StringsUtil;
 use Core\main\factories\http\uri\FactoryURI;
 use Core\main\factories\path\FactoryPath;
@@ -22,6 +23,7 @@ class FactoryCreateRequest extends FactoryMachine
         $routeParams = (new FactoryPath())->maker();
         $uriLoad = (new FactoryURI())->maker();
         $stringUtils = new StringsUtil();
+        $serverRequest = new ServerRequest();
 
         $serverHTTPValidate = new ServerHTTPValidate(
             $serverHTTPLoad,
@@ -39,7 +41,8 @@ class FactoryCreateRequest extends FactoryMachine
             $serverHTTPValidate,
             $routeParams,
             $uriLoad,
-            $stringUtils
+            $stringUtils,
+            $serverRequest
         );
     }
 }
