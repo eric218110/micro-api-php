@@ -1,5 +1,5 @@
 {
-    "version": "0.0.1",
+    "version": "0.0.2",
     "name": "eric218110/simple-api-php",
     "description": "Simple api PHP",
     "type": "project",
@@ -26,5 +26,8 @@
             "name": "Eric Silva Mendes",
             "email": "ericsilvaccp@gmail.com"
         }
-    ]
+    ],
+  "require": {
+    "ext-json": "*"
+  }
 }

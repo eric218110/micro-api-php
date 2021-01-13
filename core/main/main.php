@@ -1,9 +1,7 @@
 <?php
 
-use Core\main\factories\path\FactoryPath;
+use Core\main\factories\http\request\create\FactoryCreateRequest;
 
-$instancePath = new FactoryPath();
+$request = (new FactoryCreateRequest())->maker();
 
-$path = $instancePath->maker();
-
-var_dump($path->loadIndexFolder());
+var_dump($request->loadQuery()->name);
