@@ -2,20 +2,23 @@
 
 namespace Core\data\useCases\http\uri;
 
-use Core\domain\protocols\http\uri\URILoadProtocol;
+use Core\domain\protocols\http\uri\URILoad;
 use Core\domain\protocols\server\request\ServerRequestURI;
 use Core\domain\protocols\utils\path\RootDir;
 use Core\domain\protocols\utils\strings\RemoveFirstAndLastBar;
 
-class URI implements URILoadProtocol
+class URI implements URILoad
 {
 
     private $stringUtil;
     private $path;
     private $serverRequest;
-    private $homeRootDirectory;
 
-    public function __construct(RemoveFirstAndLastBar $stringUtil, RootDir $path, ServerRequestURI $serverRequest)
+    public function __construct(
+        RemoveFirstAndLastBar $stringUtil,
+        RootDir $path,
+        ServerRequestURI $serverRequest
+    )
     {
         $this->stringUtil = $stringUtil;
         $this->path = $path;
