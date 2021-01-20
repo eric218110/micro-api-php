@@ -3,8 +3,8 @@
 
 namespace Core\data\useCases\http\request\main;
 
-use stdClass;
 use Core\domain\protocols\http\request\Request as RequestProtocols;
+use stdClass;
 
 class Request implements RequestProtocols
 {

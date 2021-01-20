@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 namespace Core\domain\protocols\server\request;
 
-interface ServerRequestHostName {
+interface ServerRequestHostName
+{
     public function loadHostname(): string;
 }

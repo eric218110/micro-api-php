@@ -11,5 +11,5 @@ use Core\domain\protocols\http\request\traits\create\query\CreateQueryRequest;
 
 interface CreateRequest extends CreateBodyRequest, CreateClientIpRequest, CreateParamsRequest, CreateQueryRequest
 {
-    public function createBodyQueryClientIpParamsInRequest(): void;
+    public function createBodyQueryClientIpParamsInRequest(string $path): void;
 }

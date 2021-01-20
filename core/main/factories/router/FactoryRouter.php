@@ -3,8 +3,8 @@
 
 namespace Core\main\factories\router;
 
-use Core\domain\routes\protocols\Route;
 use Core\data\routes\useCase\Route as RouteAlias;
+use Core\domain\routes\protocols\Route;
 
 class FactoryRouter
 {

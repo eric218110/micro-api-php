@@ -21,7 +21,8 @@ class Path implements BaseFolder, BasePath, RootDir, RouterPath
         ServerRequestHostName $serverHostname,
         ServerRequestURI $serverRequest,
         RemoveFirstAndLastBar $stringUtil
-    ) {
+    )
+    {
         $this->serverHostname = $serverHostname;
         $this->serverRequest = $serverRequest;
         $this->stringUtil = $stringUtil;

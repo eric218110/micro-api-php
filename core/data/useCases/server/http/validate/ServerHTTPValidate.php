@@ -3,12 +3,12 @@
 
 namespace Core\data\useCases\server\http\validate;
 
+use Core\domain\protocols\server\http\load\ServerHTTPLoadClientIP;
+use Core\domain\protocols\server\http\load\ServerHTTPLoadRemoteAddress;
+use Core\domain\protocols\server\http\load\ServerHTTPLoadXForwarder;
 use Core\domain\protocols\server\http\validate\ServerHTTPValidateClientIP;
 use Core\domain\protocols\server\http\validate\ServerHTTPValidateRemoteAddress;
 use Core\domain\protocols\server\http\validate\ServerHTTPValidateXForwarder;
-use Core\domain\protocols\server\http\load\ServerHTTPLoadClientIP;
-use Core\domain\protocols\server\http\load\ServerHTTPLoadXForwarder;
-use Core\domain\protocols\server\http\load\ServerHTTPLoadRemoteAddress;
 
 class ServerHTTPValidate implements ServerHTTPValidateRemoteAddress, ServerHTTPValidateXForwarder, ServerHTTPValidateClientIP
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\domain\protocols\http\request\traits\clientIp;
+namespace Core\domain\protocols\http\request\traits\validate\clientIp;
 
 
 interface ValidateClientIPHasPermission

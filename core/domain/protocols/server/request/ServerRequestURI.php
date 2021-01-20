@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 namespace Core\domain\protocols\server\request;
 
-interface ServerRequestURI {
+interface ServerRequestURI
+{
     public function loadRequestURI(): string;
 }

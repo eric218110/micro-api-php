@@ -3,8 +3,8 @@
 
 namespace Core\main\factories\http\request;
 
-use Core\domain\protocols\http\request\Request as RequestProtocols;
 use Core\data\useCases\http\request\main\Request as RequestData;
+use Core\domain\protocols\http\request\Request as RequestProtocols;
 
 class FactoryRequest
 {

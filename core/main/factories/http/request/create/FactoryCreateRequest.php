@@ -3,15 +3,16 @@
 
 namespace Core\main\factories\http\request\create;
 
+use Core\data\useCases\http\request\create\RequestCreate;
 use Core\data\useCases\server\http\load\ServerHTTPLoad;
 use Core\data\useCases\server\http\validate\ServerHTTPValidate;
 use Core\data\useCases\server\php\contents\PHPServer;
+use Core\data\useCases\server\request\ServerRequest;
+use Core\data\useCases\utils\strings\StringsUtil;
 use Core\domain\protocols\http\request\create\CreateRequest as CreateRequestProtocol;
-use Core\data\useCases\http\request\create\CreateRequest as CreateRequestData;
 use Core\main\factories\http\request\FactoryRequest;
-use Core\main\factories\path\FactoryPath;
+use Core\main\factories\http\uri\FactoryURI;
 use Core\main\factories\protocols\FactoryMachine;
-use Core\main\factories\router\FactoryRouter;
 
 class FactoryCreateRequest extends FactoryMachine
 {
@@ -19,7 +20,9 @@ class FactoryCreateRequest extends FactoryMachine
     private $serverPHPGetContents;
     private $serverHTTPLoad;
     private $serverHTTPValidate;
-    private $route;
+    private $serverRequestBaseName;
+    private $uriLoad;
+    private $removeFirstAndLastParentheses;
 
     public function __construct()
     {
@@ -31,12 +34,14 @@ class FactoryCreateRequest extends FactoryMachine
             $this->serverHTTPLoad,
             $this->serverHTTPLoad
         );
-        $this->route = FactoryRouter::getInstance();
+        $this->serverRequestBaseName = new ServerRequest();
+        $this->uriLoad = (new FactoryURI())->maker();
+        $this->removeFirstAndLastParentheses = new StringsUtil();
     }
 
     public function maker(): CreateRequestProtocol
     {
-        return new CreateRequestData (
+        return new RequestCreate(
             $this->request,
             $this->serverPHPGetContents,
             $this->serverHTTPValidate,
@@ -45,7 +50,9 @@ class FactoryCreateRequest extends FactoryMachine
             $this->serverHTTPLoad,
             $this->serverHTTPLoad,
             $this->serverHTTPLoad,
-            $this->route
+            $this->serverRequestBaseName,
+            $this->uriLoad,
+            $this->removeFirstAndLastParentheses
         );
     }
 }
