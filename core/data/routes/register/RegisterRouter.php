@@ -39,7 +39,7 @@ class RegisterRouter implements RegisterRoutes
         if ($this->validateMatchRoute($path)) {
             $this->routerCreator->createRouter($path, $callbackFunction, $args);
             $this->createRequest->createBodyQueryClientIpParamsInRequest($path);
-            exit(0);
+            echo 'match';
         } else {
             http_response_code(404);
         }

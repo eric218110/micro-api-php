@@ -8,3 +8,7 @@ $router->get('/home/{id}', function () {
 
 });
 
+$router->get('/home', function () {
+
+});
+
