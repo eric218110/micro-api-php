@@ -2,6 +2,7 @@
 
 namespace Core\domain\protocols\utils\path;
 
-interface BaseFolder {
+interface BaseFolder
+{
     public function loadIndexFolder(): string;
 }

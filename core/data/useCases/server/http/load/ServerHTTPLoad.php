@@ -3,9 +3,9 @@
 
 namespace Core\data\useCases\server\http\load;
 
+use Core\domain\protocols\server\http\load\ServerHTTPLoadClientIP;
 use Core\domain\protocols\server\http\load\ServerHTTPLoadRemoteAddress;
 use Core\domain\protocols\server\http\load\ServerHTTPLoadXForwarder;
-use Core\domain\protocols\server\http\load\ServerHTTPLoadClientIP;
 
 class ServerHTTPLoad implements ServerHTTPLoadRemoteAddress, ServerHTTPLoadXForwarder, ServerHTTPLoadClientIP
 {

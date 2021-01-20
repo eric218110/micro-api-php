@@ -11,8 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Core\\": "core//",
-            "CoreTest\\": "core/__tests__//"
+            "Core\\": "core//"
         }
     },
     "require-dev": {

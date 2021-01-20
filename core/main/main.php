@@ -1,7 +1,10 @@
 <?php
 
-use Core\main\factories\http\request\create\FactoryCreateRequest;
+$app = (new \Core\main\factories\app\FactoryApplication())->maker();
 
-$request = (new FactoryCreateRequest())->maker();
+$router = $app->router();
 
-var_dump($request->loadQuery()->name);
+$router->get('/home/{id}', function () {
+
+});
+
