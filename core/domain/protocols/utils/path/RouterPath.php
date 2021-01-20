@@ -2,6 +2,7 @@
 
 namespace Core\domain\protocols\utils\path;
 
-interface RouterPath {
+interface RouterPath
+{
     public function loadRoutePath(): string;
 }
