@@ -3,24 +3,22 @@
 
 namespace Core\data\useCases\http\request\main;
 
-
-use Core\domain\protocols\http\request\create\CreateRequest;
-use Core\domain\protocols\http\request\load\LoadRequest;
 use stdClass;
+use Core\domain\protocols\http\request\Request as RequestProtocols;
 
-class Request
+class Request implements RequestProtocols
 {
     private $body;
     private $query;
     private $params;
     private $clientIp;
 
-    public function getBody(): stdClass
+    public function getBody(): ?stdClass
     {
         return $this->body;
     }
 
-    public function setBody(stdClass $body): void
+    public function setBody(?stdClass $body): void
     {
         $this->body = $body;
     }
@@ -30,22 +28,22 @@ class Request
         return $this->query;
     }
 
-    public function setQuery($query): void
+    public function setQuery(?stdClass $query): void
     {
         $this->query = $query;
     }
 
-    public function getParams()
+    public function getParams(): stdClass
     {
         return $this->params;
     }
 
-    public function setParams($params): void
+    public function setParams(?stdClass $params): void
     {
         $this->params = $params;
     }
 
-    public function getClientIp()
+    public function getClientIp(): string
     {
         return $this->clientIp;
     }
