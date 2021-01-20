@@ -3,16 +3,22 @@
 
 namespace Core\data\routes\useCase;
 
-use Core\domain\routes\load\LoadPathRoute;
+
+use Core\domain\protocols\http\request\create\CreateRequest;
 use Core\domain\routes\protocols\Route as RouteProtocols;
 
-class Route implements RouteProtocols, LoadPathRoute
+class Route implements RouteProtocols
 {
     private $routes = array();
+    private $createRequest;
 
     const INDEX_PATH = 'path';
     const INDEX_CALLBACK_FUNCTION = 'callbackFunction';
     const INDEX_ARGUMENTS = 'args';
+
+    public function __construct()
+    {
+    }
 
     public function createRouter(string $path, callable $callbackFunction, array $args = []): void
     {
@@ -23,9 +29,6 @@ class Route implements RouteProtocols, LoadPathRoute
         ];
 
         $this->routes[] = $route;
-
-        var_dump($this->loadRoutes());
-
     }
 
     public function loadRoutes(): array
