@@ -4,6 +4,7 @@
 namespace Core\data\routes\register;
 
 use Core\data\routes\register\traits\RegisterGetRouter;
+use Core\domain\protocols\http\request\create\CreateRequest;
 use Core\domain\routes\create\CreateRouter;
 use Core\domain\routes\match\RouteMatchWithHTTPMethod;
 use Core\domain\routes\match\RouteMatchWithURI;
@@ -16,25 +17,29 @@ class RegisterRouter implements RegisterRoutes
     private $routerCreator;
     private $routeMatchWithURI;
     private $routeMatchWithHTTPMethod;
+    private $createRequest;
 
     const HTTP_METHOD_GET = 'get';
 
     public function __construct(
         CreateRouter $createRouter,
         RouteMatchWithURI $routeMatchWithURI,
-        RouteMatchWithHTTPMethod $routeMatchWithHTTPMethod
+        RouteMatchWithHTTPMethod $routeMatchWithHTTPMethod,
+        CreateRequest $createRequest
     )
     {
         $this->routerCreator = $createRouter;
         $this->routeMatchWithURI = $routeMatchWithURI;
         $this->routeMatchWithHTTPMethod = $routeMatchWithHTTPMethod;
+        $this->createRequest = $createRequest;
     }
 
     public function get(string $path, callable $callbackFunction, array $args = []): void
     {
         if ($this->validateMatchRoute($path)) {
             $this->routerCreator->createRouter($path, $callbackFunction, $args);
-
+            $this->createRequest->createBodyQueryClientIpParamsInRequest($path);
+            exit(0);
         } else {
             http_response_code(404);
         }
