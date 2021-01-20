@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\domain\protocols\http\request\traits\params;
+namespace Core\domain\protocols\http\request\traits\load\params;
 
 use stdClass;
 

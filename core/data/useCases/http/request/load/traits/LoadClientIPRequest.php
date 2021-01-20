@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\data\useCases\http\request\create\traits;
+namespace Core\data\useCases\http\request\load\traits;
 
 
 trait LoadClientIPRequest

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\domain\protocols\http\request\traits\query;
+namespace Core\domain\protocols\http\request\traits\load\query;
 
 use stdClass;
 

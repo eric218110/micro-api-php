@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\domain\protocols\http\request\traits\body;
+namespace Core\domain\protocols\http\request\traits\load\body;
 
 use stdClass;
 
