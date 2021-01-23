@@ -4,7 +4,11 @@
 namespace Core\data\routes\register;
 
 use Core\data\routes\register\traits\RegisterGetRouter;
+use Core\domain\app\HttpRequest;
+use Core\domain\app\HttpResponse;
 use Core\domain\protocols\http\request\create\CreateRequest;
+use Core\domain\protocols\http\request\load\LoadRequest;
+use Core\domain\routes\call\CallResourceRoute;
 use Core\domain\routes\create\CreateRouter;
 use Core\domain\routes\match\RouteMatchWithHTTPMethod;
 use Core\domain\routes\match\RouteMatchWithURI;
@@ -18,6 +22,9 @@ class RegisterRouter implements RegisterRoutes
     private $routeMatchWithURI;
     private $routeMatchWithHTTPMethod;
     private $createRequest;
+    private $httpRequest;
+    private $httpResponse;
+    private $callResourceRoute;
 
     const HTTP_METHOD_GET = 'get';
 
@@ -25,21 +32,31 @@ class RegisterRouter implements RegisterRoutes
         CreateRouter $createRouter,
         RouteMatchWithURI $routeMatchWithURI,
         RouteMatchWithHTTPMethod $routeMatchWithHTTPMethod,
-        CreateRequest $createRequest
+        CreateRequest $createRequest,
+        HttpRequest $httpRequest,
+        HttpResponse $httpResponse,
+        CallResourceRoute $callResourceRoute
     )
     {
         $this->routerCreator = $createRouter;
         $this->routeMatchWithURI = $routeMatchWithURI;
         $this->routeMatchWithHTTPMethod = $routeMatchWithHTTPMethod;
         $this->createRequest = $createRequest;
+        $this->httpRequest = $httpRequest;
+        $this->httpResponse = $httpResponse;
+        $this->callResourceRoute = $callResourceRoute;
     }
 
     public function get(string $path, callable $callbackFunction, array $args = []): void
     {
         if ($this->validateMatchRoute($path)) {
             $this->routerCreator->createRouter($path, $callbackFunction, $args);
-            $this->createRequest->createBodyQueryClientIpParamsInRequest($path);
-            echo 'match';
+            $this->createRequest->createBodyQueryClientIpParamsInRequest($path, $args);
+            $this->callResourceRoute->callFunctionRoute(
+                $callbackFunction,
+                $this->httpRequest,
+                $this->httpResponse
+            );
         } else {
             http_response_code(404);
         }
