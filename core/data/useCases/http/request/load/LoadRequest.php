@@ -3,31 +3,28 @@
 
 namespace Core\data\useCases\http\request\load;
 
-use Core\domain\protocols\http\request\load\LoadRequest as LoadRequestProtocols;
-use stdClass;
+use Core\data\useCases\http\request\load\traits\LoadArgsTrait;
+use Core\data\useCases\http\request\load\traits\LoadBodyTrait;
+use Core\data\useCases\http\request\load\traits\LoadClientIpTrait;
+use Core\data\useCases\http\request\load\traits\LoadParamsTrait;
+use Core\data\useCases\http\request\load\traits\LoadQueryTrait;
+use Core\domain\app\HttpRequest as LoadRequestProtocols;
+use Core\domain\protocols\http\request\Request;
 
 
 class LoadRequest implements LoadRequestProtocols
 {
-    public function loadBody(): stdClass
+
+    use LoadBodyTrait;
+    use LoadClientIpTrait;
+    use LoadParamsTrait;
+    use LoadQueryTrait;
+    use LoadArgsTrait;
+
+    private $request;
+
+    public function __construct(Request $request)
     {
-        // TODO: Implement loadBody() method.
+        $this->request = $request;
     }
-
-    public function loadClientIp(): string
-    {
-        // TODO: Implement loadClientIp() method.
-    }
-
-    public function loadParams(): stdClass
-    {
-        // TODO: Implement loadParams() method.
-    }
-
-    public function loadQuery(): stdClass
-    {
-        // TODO: Implement loadQuery() method.
-    }
-
-
 }
