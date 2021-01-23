@@ -1,16 +1,13 @@
 <?php
 
 use Core\main\application\Application;
+use Src\presentation\controller\home\HomeController;
 
 $app = Application::maker();
 
 $router = $app->router();
 
-$router->get('/home/{id}', function () {
+$homeController = new HomeController();
 
-});
-
-$router->get('/home', function () {
-
-});
+$router->get('/home', array($homeController, 'handler'));
 
