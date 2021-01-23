@@ -4,7 +4,13 @@
 namespace Core\domain\app;
 
 
-interface HttpRequest
+use Core\domain\protocols\http\request\traits\load\args\LoadArgsRequest;
+use Core\domain\protocols\http\request\traits\load\body\LoadBodyRequest;
+use Core\domain\protocols\http\request\traits\load\clientIp\LoadClientIpRequest;
+use Core\domain\protocols\http\request\traits\load\params\LoadParamsRequest;
+use Core\domain\protocols\http\request\traits\load\query\LoadQueryRequest;
+
+interface HttpRequest extends LoadBodyRequest, LoadClientIpRequest, LoadParamsRequest, LoadQueryRequest, LoadArgsRequest
 {
 
 }

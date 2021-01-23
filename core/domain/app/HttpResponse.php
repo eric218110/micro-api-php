@@ -4,7 +4,9 @@
 namespace Core\domain\app;
 
 
-class HttpResponse
+use Core\domain\protocols\http\response\json\ResponseToJSON;
+
+interface HttpResponse extends ResponseToJSON
 {
 
 }
