@@ -1,14 +1,16 @@
 <?php
 
 
-namespace Core\domain\protocols\http\request\load;
+namespace Core\domain\app;
 
+
+use Core\domain\protocols\http\request\traits\load\args\LoadArgsRequest;
 use Core\domain\protocols\http\request\traits\load\body\LoadBodyRequest;
 use Core\domain\protocols\http\request\traits\load\clientIp\LoadClientIpRequest;
 use Core\domain\protocols\http\request\traits\load\params\LoadParamsRequest;
 use Core\domain\protocols\http\request\traits\load\query\LoadQueryRequest;
 
-interface LoadRequest extends LoadBodyRequest, LoadClientIpRequest, LoadParamsRequest, LoadQueryRequest
+interface HttpRequest extends LoadBodyRequest, LoadClientIpRequest, LoadParamsRequest, LoadQueryRequest, LoadArgsRequest
 {
 
 }

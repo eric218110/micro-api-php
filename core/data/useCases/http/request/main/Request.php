@@ -12,6 +12,17 @@ class Request implements RequestProtocols
     private $query;
     private $params;
     private $clientIp;
+    private $args;
+
+    public function setArgs(array $args): void
+    {
+        $this->args = $args;
+    }
+
+    public function getArgs(): stdClass
+    {
+         return (object) $this->args;
+    }
 
     public function getBody(): ?stdClass
     {

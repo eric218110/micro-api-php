@@ -3,6 +3,7 @@
 
 namespace Core\data\useCases\http\request\create;
 
+use Core\data\useCases\http\request\create\traits\CreateArgsTrait;
 use Core\data\useCases\http\request\create\traits\CreateBodyTrait;
 use Core\data\useCases\http\request\create\traits\CreateClientIpTrait;
 use Core\data\useCases\http\request\create\traits\CreateParamsTrait;
@@ -26,6 +27,7 @@ class RequestCreate implements CreateRequest
     use CreateClientIpTrait;
     use CreateQueryTrait;
     use CreateParamsTrait;
+    use CreateArgsTrait;
 
     private $request;
     private $serverPHPGetContents;
@@ -66,12 +68,13 @@ class RequestCreate implements CreateRequest
         $this->removeFirstAndLastParentheses = $removeFirstAndLastParentheses;
     }
 
-    public function createBodyQueryClientIpParamsInRequest(string $path): void
+    public function createBodyQueryClientIpParamsInRequest(string $path, array $args): void
     {
         $this->createBody();
         $this->createClientIp();
         $this->createParamsRequest($path);
         $this->createQueryRequest();
+        $this->createArgs($args);
     }
 
 }

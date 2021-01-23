@@ -7,5 +7,5 @@ use stdClass;
 
 interface LoadQueryRequest
 {
-    public function loadQuery(): stdClass;
+    public function loadQuery(): ?stdClass;
 }

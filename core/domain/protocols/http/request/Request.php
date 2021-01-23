@@ -22,4 +22,8 @@ interface Request
     public function getClientIp(): string;
 
     public function setClientIp($clientIp): void;
+
+    public function getArgs(): stdClass;
+
+    public function setArgs(array $args): void;
 }
