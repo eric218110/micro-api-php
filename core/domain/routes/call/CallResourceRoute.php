@@ -4,7 +4,14 @@
 namespace Core\domain\routes\call;
 
 
-class CallResourceRoute
-{
+use Core\domain\app\HttpRequest;
+use Core\domain\app\HttpResponse;
 
+interface CallResourceRoute
+{
+    public function callFunctionRoute(
+        callable $callbackFunction,
+        HttpRequest $httpRequest,
+        HttpResponse $httpResponse
+    ): void;
 }
