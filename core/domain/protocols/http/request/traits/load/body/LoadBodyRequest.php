@@ -7,5 +7,5 @@ use stdClass;
 
 interface LoadBodyRequest
 {
-    public function loadBody(): stdClass;
+    public function loadBody(): ?stdClass;
 }

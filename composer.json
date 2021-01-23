@@ -1,5 +1,5 @@
 {
-    "version": "0.0.2",
+    "version": "0.0.3",
     "name": "eric218110/simple-api-php",
     "description": "Simple api PHP",
     "type": "project",
@@ -11,7 +11,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Core\\": "core//"
+            "Core\\": "core//",
+            "Src\\": "src//"
         }
     },
     "require-dev": {

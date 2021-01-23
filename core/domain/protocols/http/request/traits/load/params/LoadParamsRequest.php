@@ -7,5 +7,5 @@ use stdClass;
 
 interface LoadParamsRequest
 {
-    public function loadParams(): stdClass;
+    public function loadParams(): ?stdClass;
 }
