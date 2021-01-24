@@ -10,6 +10,6 @@ trait LoadQueryTrait
 {
     public function loadQuery(): ?stdClass
     {
-        $this->request->getQuery();
+        return $this->request->getQuery();
     }
 }

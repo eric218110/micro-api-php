@@ -3,7 +3,7 @@
 
 namespace Core\data\app;
 
-use Core\domain\app\Application as ApplicationProtocols;
+use Core\domain\app\main\Application as ApplicationProtocols;
 use Core\domain\routes\register\RegisterRoutes;
 
 class Application implements ApplicationProtocols

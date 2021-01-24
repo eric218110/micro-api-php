@@ -4,8 +4,8 @@
 namespace Src\presentation\protocols\http;
 
 
-use Core\domain\app\HttpRequest;
-use Core\domain\app\HttpResponse;
+use Core\domain\app\http\HttpRequest;
+use Core\domain\app\http\HttpResponse;
 
 interface Controller
 {

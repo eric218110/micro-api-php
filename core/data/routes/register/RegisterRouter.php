@@ -4,10 +4,9 @@
 namespace Core\data\routes\register;
 
 use Core\data\routes\register\traits\RegisterGetRouter;
-use Core\domain\app\HttpRequest;
-use Core\domain\app\HttpResponse;
+use Core\domain\app\http\HttpRequest;
+use Core\domain\app\http\HttpResponse;
 use Core\domain\protocols\http\request\create\CreateRequest;
-use Core\domain\protocols\http\request\load\LoadRequest;
 use Core\domain\routes\call\CallResourceRoute;
 use Core\domain\routes\create\CreateRouter;
 use Core\domain\routes\match\RouteMatchWithHTTPMethod;
