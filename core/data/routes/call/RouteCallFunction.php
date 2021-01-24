@@ -12,6 +12,6 @@ class RouteCallFunction implements CallResourceRoute
 
     public function callFunctionRoute(callable $callbackFunction, HttpRequest $httpRequest, HttpResponse $httpResponse): void
     {
-        call_user_func($callbackFunction);
+        $callbackFunction($httpRequest, $httpResponse);
     }
 }
