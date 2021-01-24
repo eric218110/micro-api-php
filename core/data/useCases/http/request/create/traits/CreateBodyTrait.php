@@ -19,11 +19,9 @@ trait CreateBodyTrait
                     $objStd->$key = $value;
                 }
             }
-            $body = $objStd;
+            $this->request->setBody($objStd);
+        } else {
+            $this->request->setBody(new stdClass());
         }
-
-        if ($body === '') $this->request->setBody(new stdClass());
-
-        $this->request->setBody(new stdClass());
     }
 }

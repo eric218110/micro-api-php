@@ -4,15 +4,14 @@
 namespace Src\presentation\controller\home;
 
 
-use Core\domain\app\HttpRequest;
-use Core\domain\app\HttpResponse;
+use Core\domain\app\http\HttpRequest;
+use Core\domain\app\http\HttpResponse;
 use Src\presentation\protocols\http\Controller;
 
-class HomeController
+class HomeController implements Controller
 {
-    public function handler(): void
+    public function handler(HttpRequest $httpRequest, HttpResponse $httpResponse): void
     {
-        echo 'Home Controller';
+        $httpResponse->json(array('hello' => 'word'));
     }
-
 }
