@@ -4,10 +4,9 @@
 namespace Src\presentation\protocols\http;
 
 
-use Core\domain\app\http\HttpRequest;
-use Core\domain\app\http\HttpResponse;
+use Core\domain\app\controller\ApplicationController;
 
-interface Controller
+interface Controller extends ApplicationController
 {
-    public function handler(HttpRequest $httpRequest, HttpResponse $httpResponse): void;
+
 }
