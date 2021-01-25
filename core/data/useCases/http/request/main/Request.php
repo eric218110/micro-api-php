@@ -13,13 +13,14 @@ class Request implements RequestProtocols
     private $params;
     private $clientIp;
     private $args;
+    private $headers;
 
     public function setArgs(array $args): void
     {
         $this->args = $args;
     }
 
-    public function getArgs(): stdClass
+    public function getArgs(): ?stdClass
     {
          return (object) $this->args;
     }
@@ -62,5 +63,15 @@ class Request implements RequestProtocols
     public function setClientIp($clientIp): void
     {
         $this->clientIp = $clientIp;
+    }
+
+    public function getHeaders(): ?stdClass
+    {
+        return $this->headers;
+    }
+
+    public function setHeaders(stdClass $headers): void
+    {
+        $this->headers = $headers;
     }
 }

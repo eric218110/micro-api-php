@@ -23,7 +23,11 @@ interface Request
 
     public function setClientIp($clientIp): void;
 
-    public function getArgs(): stdClass;
+    public function getArgs(): ?stdClass;
 
     public function setArgs(array $args): void;
+
+    public function getHeaders(): ?stdClass;
+
+    public function setHeaders(stdClass $headers): void;
 }

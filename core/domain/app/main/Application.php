@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\domain\app;
+namespace Core\domain\app\main;
 
 
 use Core\domain\routes\register\RegisterRoutes;

@@ -4,7 +4,7 @@
 namespace Core\data\useCases\http\response;
 
 
-use Core\domain\app\HttpResponse;
+use Core\domain\app\http\HttpResponse;
 
 class ResponseHttp implements HttpResponse
 {

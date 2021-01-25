@@ -3,7 +3,7 @@
 
 namespace Core\main\application;
 
-use Core\domain\app\Application as ApplicationProtocols;
+use Core\domain\app\main\Application as ApplicationProtocols;
 use Core\main\factories\app\FactoryApplication;
 
 class Application
