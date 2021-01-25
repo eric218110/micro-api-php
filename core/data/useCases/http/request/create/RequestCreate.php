@@ -6,11 +6,13 @@ namespace Core\data\useCases\http\request\create;
 use Core\data\useCases\http\request\create\traits\CreateArgsTrait;
 use Core\data\useCases\http\request\create\traits\CreateBodyTrait;
 use Core\data\useCases\http\request\create\traits\CreateClientIpTrait;
+use Core\data\useCases\http\request\create\traits\CreateHeaderTrait;
 use Core\data\useCases\http\request\create\traits\CreateParamsTrait;
 use Core\data\useCases\http\request\create\traits\CreateQueryTrait;
 use Core\domain\protocols\http\request\create\CreateRequest;
 use Core\domain\protocols\http\request\Request;
 use Core\domain\protocols\http\uri\URILoad;
+use Core\domain\protocols\server\apache\header\ServerApacheLoadHeadersRequest;
 use Core\domain\protocols\server\http\load\ServerHTTPLoadClientIP;
 use Core\domain\protocols\server\http\load\ServerHTTPLoadRemoteAddress;
 use Core\domain\protocols\server\http\load\ServerHTTPLoadXForwarder;
@@ -28,6 +30,7 @@ class RequestCreate implements CreateRequest
     use CreateQueryTrait;
     use CreateParamsTrait;
     use CreateArgsTrait;
+    use CreateHeaderTrait;
 
     private $request;
     private $serverPHPGetContents;
@@ -40,6 +43,7 @@ class RequestCreate implements CreateRequest
     private $serverRequestBaseName;
     private $uriLoad;
     private $removeFirstAndLastParentheses;
+    private $serverApacheLoadHeadersRequest;
 
     public function __construct(
         Request $request,
@@ -52,7 +56,8 @@ class RequestCreate implements CreateRequest
         ServerHTTPLoadRemoteAddress $serverHTTPLoadRemoteAddress,
         ServerRequestBaseName $serverRequestBaseName,
         URILoad $uriLoad,
-        RemoveFirstAndLastParentheses $removeFirstAndLastParentheses
+        RemoveFirstAndLastParentheses $removeFirstAndLastParentheses,
+        ServerApacheLoadHeadersRequest $serverApacheLoadHeadersRequest
     )
     {
         $this->request = $request;
@@ -66,6 +71,7 @@ class RequestCreate implements CreateRequest
         $this->serverRequestBaseName = $serverRequestBaseName;
         $this->uriLoad = $uriLoad;
         $this->removeFirstAndLastParentheses = $removeFirstAndLastParentheses;
+        $this->serverApacheLoadHeadersRequest = $serverApacheLoadHeadersRequest;
     }
 
     public function createBodyQueryClientIpParamsInRequest(string $path, array $args): void
@@ -75,6 +81,6 @@ class RequestCreate implements CreateRequest
         $this->createParamsRequest($path);
         $this->createQueryRequest();
         $this->createArgs($args);
+        $this->createHeader();
     }
-
 }

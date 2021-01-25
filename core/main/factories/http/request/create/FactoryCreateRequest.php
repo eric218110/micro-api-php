@@ -4,6 +4,7 @@
 namespace Core\main\factories\http\request\create;
 
 use Core\data\useCases\http\request\create\RequestCreate;
+use Core\data\useCases\server\apache\header\ApacheServer;
 use Core\data\useCases\server\http\load\ServerHTTPLoad;
 use Core\data\useCases\server\http\validate\ServerHTTPValidate;
 use Core\data\useCases\server\php\contents\PHPServer;
@@ -23,6 +24,7 @@ class FactoryCreateRequest extends FactoryMachine
     private $serverRequestBaseName;
     private $uriLoad;
     private $removeFirstAndLastParentheses;
+    private $serverApacheLoadHeadersRequest;
 
     public function __construct()
     {
@@ -37,6 +39,7 @@ class FactoryCreateRequest extends FactoryMachine
         $this->serverRequestBaseName = new ServerRequest();
         $this->uriLoad = (new FactoryURI())->maker();
         $this->removeFirstAndLastParentheses = new StringsUtil();
+        $this->serverApacheLoadHeadersRequest = new ApacheServer();
     }
 
     public function maker(): CreateRequestProtocol
@@ -52,7 +55,8 @@ class FactoryCreateRequest extends FactoryMachine
             $this->serverHTTPLoad,
             $this->serverRequestBaseName,
             $this->uriLoad,
-            $this->removeFirstAndLastParentheses
+            $this->removeFirstAndLastParentheses,
+            $this->serverApacheLoadHeadersRequest
         );
     }
 }
