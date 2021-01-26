@@ -3,8 +3,12 @@
 
 namespace Core\data\routes\register;
 
+use Core\data\routes\register\traits\RegisterCustomHttpMethod;
+use Core\data\routes\register\traits\RegisterDeleteRouter;
 use Core\data\routes\register\traits\RegisterGetRouter;
+use Core\data\routes\register\traits\RegisterPatchRouter;
 use Core\data\routes\register\traits\RegisterPostRouter;
+use Core\data\routes\register\traits\RegisterPutRouter;
 use Core\domain\app\http\HttpRequest;
 use Core\domain\app\http\HttpResponse;
 use Core\domain\protocols\http\request\create\CreateRequest;
@@ -17,6 +21,10 @@ class RegisterRouter implements RegisterRoutes
 {
     use RegisterGetRouter;
     use RegisterPostRouter;
+    use RegisterDeleteRouter;
+    use RegisterPutRouter;
+    use RegisterPatchRouter;
+    use RegisterCustomHttpMethod;
 
     private $routerCreator;
     private $createRequest;
@@ -27,6 +35,9 @@ class RegisterRouter implements RegisterRoutes
 
     const HTTP_METHOD_GET = 'get';
     const HTTP_METHOD_POST = 'post';
+    const HTTP_METHOD_PUT = 'put';
+    const HTTP_METHOD_DELETE = 'delete';
+    const HTTP_METHOD_PATCH = 'patch';
 
     public function __construct(
         CreateRouter $createRouter,

@@ -8,10 +8,6 @@ trait RegisterGetRouter
 {
     public function get(string $path, callable $callbackFunction, array $args = []): void
     {
-        $this->validateCreateRouterCreateBodyAndCallFunction(
-            $path,
-            $callbackFunction,
-            $args,
-            self::HTTP_METHOD_GET);
+        $this->validateCreateRouterCreateBodyAndCallFunction($path, $callbackFunction, $args, self::HTTP_METHOD_GET);
     }
 }
