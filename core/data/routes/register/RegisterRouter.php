@@ -3,52 +3,62 @@
 
 namespace Core\data\routes\register;
 
+use Core\data\routes\register\traits\RegisterCustomHttpMethod;
+use Core\data\routes\register\traits\RegisterDeleteRouter;
 use Core\data\routes\register\traits\RegisterGetRouter;
+use Core\data\routes\register\traits\RegisterPatchRouter;
+use Core\data\routes\register\traits\RegisterPostRouter;
+use Core\data\routes\register\traits\RegisterPutRouter;
 use Core\domain\app\http\HttpRequest;
 use Core\domain\app\http\HttpResponse;
 use Core\domain\protocols\http\request\create\CreateRequest;
 use Core\domain\routes\call\CallResourceRoute;
 use Core\domain\routes\create\CreateRouter;
-use Core\domain\routes\match\RouteMatchWithHTTPMethod;
-use Core\domain\routes\match\RouteMatchWithURI;
 use Core\domain\routes\register\RegisterRoutes;
+use Core\domain\routes\validate\match\ValidateMatchRoute;
 
 class RegisterRouter implements RegisterRoutes
 {
     use RegisterGetRouter;
+    use RegisterPostRouter;
+    use RegisterDeleteRouter;
+    use RegisterPutRouter;
+    use RegisterPatchRouter;
+    use RegisterCustomHttpMethod;
 
     private $routerCreator;
-    private $routeMatchWithURI;
-    private $routeMatchWithHTTPMethod;
     private $createRequest;
     private $httpRequest;
     private $httpResponse;
     private $callResourceRoute;
+    private $validateMatchRoute;
 
     const HTTP_METHOD_GET = 'get';
+    const HTTP_METHOD_POST = 'post';
+    const HTTP_METHOD_PUT = 'put';
+    const HTTP_METHOD_DELETE = 'delete';
+    const HTTP_METHOD_PATCH = 'patch';
 
     public function __construct(
         CreateRouter $createRouter,
-        RouteMatchWithURI $routeMatchWithURI,
-        RouteMatchWithHTTPMethod $routeMatchWithHTTPMethod,
         CreateRequest $createRequest,
         HttpRequest $httpRequest,
         HttpResponse $httpResponse,
-        CallResourceRoute $callResourceRoute
+        CallResourceRoute $callResourceRoute,
+        ValidateMatchRoute $validateMatchRoute
     )
     {
         $this->routerCreator = $createRouter;
-        $this->routeMatchWithURI = $routeMatchWithURI;
-        $this->routeMatchWithHTTPMethod = $routeMatchWithHTTPMethod;
         $this->createRequest = $createRequest;
         $this->httpRequest = $httpRequest;
         $this->httpResponse = $httpResponse;
         $this->callResourceRoute = $callResourceRoute;
+        $this->validateMatchRoute = $validateMatchRoute;
     }
 
-    public function get(string $path, callable $callbackFunction, array $args = []): void
+    private function validateCreateRouterCreateBodyAndCallFunction(string $path, callable $callbackFunction, array $args, string $httpMethod)
     {
-        if ($this->validateMatchRoute($path)) {
+        if ($this->validateMatchRoute->validateRouteMatch($path, $httpMethod)) {
             $this->routerCreator->createRouter($path, $callbackFunction, $args);
             $this->createRequest->createBodyQueryClientIpParamsInRequest($path, $args);
             $this->callResourceRoute->callFunctionRoute(
@@ -59,15 +69,5 @@ class RegisterRouter implements RegisterRoutes
         } else {
             http_response_code(404);
         }
-    }
-
-    private function validateMatchRoute(string $path): bool
-    {
-        if ($this->routeMatchWithURI->matchRouteWithURI($path)) {
-            if ($this->routeMatchWithHTTPMethod->matchRouteWithHTTPMethod(self::HTTP_METHOD_GET)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
